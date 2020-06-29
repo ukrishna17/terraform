@@ -27,6 +27,11 @@ pipeline {
                 sh 'ls ./terraform; sudo terraform plan ./terraform'
              }
         }
+        stage('terraform plan') {
+            steps {
+                sh 'ls ./terraform; sudo terraform apply ./terraform'
+             }
+        }
         stage('terraform ended') {
             steps {
                 sh 'echo "Ended....!!"'
