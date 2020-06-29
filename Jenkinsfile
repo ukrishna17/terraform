@@ -27,7 +27,7 @@ pipeline {
                 sh 'ls ./terraform; sudo terraform plan ./terraform'
              }
         }
-        stage('terraform plan') {
+        stage('terraform apply') {
             steps {
                 sh 'ls ./terraform; sudo terraform apply ./terraform'
              }
