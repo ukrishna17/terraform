@@ -29,7 +29,7 @@ pipeline {
         }
         stage('terraform apply') {
             steps {
-                sh 'ls ./terraform; sudo terraform apply ./terraform'
+                sh 'sudo terraform apply ./terraform'
              }
         }
         stage('terraform ended') {
