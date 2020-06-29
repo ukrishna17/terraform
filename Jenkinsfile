@@ -24,7 +24,7 @@ pipeline {
         }
         stage('terraform plan') {
             steps {
-                sh 'ls terraform plan'
+                sh 'sudo terraform plan'
             }
         }
         stage('terraform ended') {
