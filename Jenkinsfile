@@ -39,10 +39,7 @@ try {
       }
     }
   }
-
-  if (env.BRANCH_NAME == 'master') {
-
-    // Run terraform apply
+   // Run terraform apply
     stage('apply') {
       node {
         withCredentials([[
@@ -73,8 +70,7 @@ try {
         }
       }
     }
-  }
-  currentBuild.result = 'SUCCESS'
+  
 }
 catch (org.jenkinsci.plugins.workflow.steps.FlowInterruptedException flowError) {
   currentBuild.result = 'ABORTED'
