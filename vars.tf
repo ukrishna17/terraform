@@ -12,5 +12,10 @@ variable AMIS {
      us-east-2 = "ami-0a63f96e85105c6d3"
      us-west-2 = "ami-003634241a8fcdec0"
   }
-
 }
+variable PUB_KEY {
+  default = "dinokey.pub"
+  }
+variable PRIV_KEY {
+  default = "dinokey"
+  }
