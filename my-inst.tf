@@ -9,7 +9,7 @@ resource "aws_instance" "vpro-nginx" {
   subnet_id = aws_subnet.vprofile-pub-1.id
 #  availability_zone = var.ZONE1
 #  key_name = aws_key_pair.dino-key.key_name
-  key_name = Terra-Key
+  key_name = "Terra-Key"
   vpc_security_group_ids = [aws_security_group.vpro_stack_sg.id]
   tags = {
     Name = "my-dynos"
