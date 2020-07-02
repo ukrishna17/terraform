@@ -93,3 +93,13 @@ resource "aws_route_table_association" "vpro-pub-1-a" {
   subnet_id      = aws_subnet.vprofile-pub-1.id
   route_table_id = aws_route_table.vprofile-pub-RT.id
 }
+
+resource "aws_route_table_association" "vpro-pub-2-a" {
+  subnet_id      = aws_subnet.vprofile-pub-2.id
+  route_table_id = aws_route_table.vprofile-pub-RT.id
+}
+
+resource "aws_route_table_association" "vpro-pub-3-a" {
+  subnet_id      = aws_subnet.vprofile-pub-3.id
+  route_table_id = aws_route_table.vprofile-pub-RT.id
+}
