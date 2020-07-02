@@ -1,14 +1,52 @@
-provider "aws" {
-   region = "us-east-1"
+#resource "aws_key_pair" "dino-key" {
+#  key_name   = "dinokey"
+#  public_key = file(var.PUB_KEY)
+#}
+
+resource "aws_instance" "vpro-nginx" {
+  ami = var.AMIS[var.REGION]
+  instance_type = "t2.micro"
+  subnet_id = aws_subnet.vprofile-pub-1.id
+#  availability_zone = var.ZONE1
+  key_name = aws_key_pair.dino-key.key_name
+  vpc_security_group_ids = [aws_security_group.vpro_stack_sg.id]
+  tags = {
+    Name = "my-dynos"
+  }
 }
 
-resource "aws_instance" "intro" {
-  ami = "ami-0ac80df6eff0e70b5"
-  instance_type = "t2.micro"
+#  provisioner "file"  {
+#    source = "web.sh"
+#    destination = "/tmp/web.sh"
+#  }
+#  provisioner "remote-exec" {
+#    inline = [
+#     "chmod u+x /tmp/web.sh",
+#     "sudo /tmp/web.sh"
+#    ]
+#  }
+# connection {
+#    user = "ubuntu"
+#   private_key = file(var.PRIV_KEY)
+#    host = self.private_ip
+#  }
+
+
+resource "aws_ebs_volume" "vol_4_ngin" {
   availability_zone = "us-east-1a"
-  key_name = "Terra-Key"
-  vpc_security_group_ids = ["sg-264f5d0c"]
+  size              = 5
+
   tags = {
-    Name = "my-dino"
+    Name = "extra-vol-4-vprofile"
   }
+}
+
+resource "aws_volume_attachment" "attch_vol_nginx" {
+  device_name = "/dev/xvdh"
+  volume_id   = aws_ebs_volume.vol_4_ngin.id
+  instance_id = aws_instance.vpro-nginx.id
+}
+
+output "IP" {
+  value = aws_instance.vpro-nginx.private_ip
 }
