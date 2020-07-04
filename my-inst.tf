@@ -1,7 +1,7 @@
-#resource "aws_key_pair" "dino-key" {
-#  key_name   = "dinokey"
-#  public_key = file(var.PUB_KEY)
-#}
+resource "aws_key_pair" "dino-key" {
+  key_name   = "dinokey"
+  public_key = file(var.PUB_KEY)
+}
 
 resource "aws_instance" "vpro-nginx" {
   ami = var.AMIS[var.REGION]
@@ -16,21 +16,21 @@ resource "aws_instance" "vpro-nginx" {
   }
 }
 
-#  provisioner "file"  {
-#    source = "web.sh"
-#    destination = "/tmp/web.sh"
-#  }
-#  provisioner "remote-exec" {
-#    inline = [
-#     "chmod u+x /tmp/web.sh",
-#     "sudo /tmp/web.sh"
-#    ]
-#  }
-# connection {
-#    user = "ubuntu"
-#   private_key = file(var.PRIV_KEY)
-#    host = self.private_ip
-#  }
+  provisioner "file"  {
+    source = "web.sh"
+    destination = "/tmp/web.sh"
+  }
+  provisioner "remote-exec" {
+    inline = [
+     "chmod u+x /tmp/web.sh",
+     "sudo /tmp/web.sh"
+    ]
+  }
+ connection {
+    user = "ubuntu"
+   private_key = file(var.PRIV_KEY)
+    host = self.private_ip
+  }
 
 
 resource "aws_ebs_volume" "vol_4_ngin" {
