@@ -1,7 +1,7 @@
-#resource "aws_key_pair" "dino-key" {
-#  key_name   = "dinokey"
-#  public_key = file(var.PUB_KEY)
-#}
+resource "aws_key_pair" "dino-key" {
+  key_name   = "dinokey"
+  public_key = file(var.PUB_KEY)
+}
 
 resource "aws_instance" "vpro-nginx" {
   ami = var.AMIS[var.REGION]
