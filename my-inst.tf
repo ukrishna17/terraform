@@ -31,10 +31,10 @@ resource "aws_volume_attachment" "attch_vol_nginx" {
   instance_id = aws_instance.vpro-nginx.id
 }
 
-#provisioner "file"  {
-#    source = "web.sh"
-#   destination = "/tmp/web.sh"
-#  }
+provisioner "file"  {
+    source = "web.sh"
+   destination = "/tmp/web.sh"
+  }
 #provisioner "remote-exec" {
 #    inline = [
 #    "chmod u+x /tmp/web.sh",
