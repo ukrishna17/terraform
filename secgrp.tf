@@ -15,7 +15,7 @@ resource "aws_security_group" "vpro_stack_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    security_groups = "sg-0b29a2c1579c9651a"
+    security_groups = ["sg-0b29a2c1579c9651a"]
   }
 
   egress {
