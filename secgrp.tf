@@ -10,6 +10,14 @@ resource "aws_security_group" "vpro_stack_sg" {
     protocol    = "tcp"
     cidr_blocks = ["122.169.225.241/32","0.0.0.0/0"]
   }
+  
+  ingress {
+    description = "http from my computer"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["122.169.225.241/32"]
+  }
 
 #  ingress {
 #    description = "SSH from my jenkins"
