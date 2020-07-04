@@ -41,11 +41,11 @@ provisioner "file"  {
 #   "sudo /tmp/web.sh"
 #    ]
 #  }
-#connection {
-#    user = "ubuntu"
-#    private_key = file(var.PRIV_KEY)
-#    host = self.private_ip
-# }
+connection {
+    user = "ubuntu"
+    private_key = file(var.PRIV_KEY)
+    host = self.private_ip
+}
 
 output "IP" {
   value = aws_instance.vpro-nginx.private_ip
