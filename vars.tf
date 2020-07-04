@@ -19,3 +19,7 @@ variable PUB_KEY {
 variable PRIV_KEY {
   default = "dinokey"
   }
+variable "key_path" {
+  description = "SSH Public Key path"
+  default = "public_key"
+}
