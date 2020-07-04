@@ -8,16 +8,16 @@ resource "aws_security_group" "vpro_stack_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["122.169.225.241/32"]
+    cidr_blocks = ["122.169.225.241/32","0.0.0.0/0"]
   }
 
-  ingress {
-    description = "SSH from my jenkins"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    security_groups = ["sg-0b29a2c1579c9651a"]
-  }
+#  ingress {
+#    description = "SSH from my jenkins"
+#    from_port   = 22
+#    to_port     = 22
+#    protocol    = "tcp"
+#    security_groups = ["sg-0b29a2c1579c9651a"]
+#  }
   egress {
     from_port   = 0
     to_port     = 0
