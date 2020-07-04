@@ -8,7 +8,7 @@ resource "aws_security_group" "vpro_stack_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["106.212.249.206/32"]
+    cidr_blocks = ["122.169.225.241/32"]
   }
 
   egress {
