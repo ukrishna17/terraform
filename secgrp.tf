@@ -8,15 +8,7 @@ resource "aws_security_group" "vpro_stack_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["122.169.225.241/32"]
-  }
-  
-  ingress {
-    description = "SSH from jenkins server "
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    security_groups = ["sg-0b29a2c1579c9651a"]
+    cidr_blocks = ["122.169.225.241/32","sg-0b29a2c1579c9651a"]
   }
 
   egress {
