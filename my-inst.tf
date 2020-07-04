@@ -31,21 +31,21 @@ resource "aws_volume_attachment" "attch_vol_nginx" {
   instance_id = aws_instance.vpro-nginx.id
 }
 
-#provisioner "file"  {
-#    source = "web.sh"
-#   destination = "/tmp/web.sh"
-#  }
-#provisioner "remote-exec" {
-#    inline = [
-#    "chmod u+x /tmp/web.sh",
-#   "sudo /tmp/web.sh"
-#    ]
-#  }
-#connection {
-#    user = "ubuntu"
-#    private_key = file(var.PRIV_KEY)
-#    host = self.private_ip
-#}
+provisioner "file"  {
+    source = "web.sh"
+   destination = "/tmp/web.sh"
+  }
+provisioner "remote-exec" {
+    inline = [
+    "chmod u+x /tmp/web.sh",
+   "sudo /tmp/web.sh"
+    ]
+  }
+connection {
+    user = "ubuntu"
+    private_key = file(var.PRIV_KEY)
+    host = self.private_ip
+}
 
 output "IP" {
   value = aws_instance.vpro-nginx.private_ip
